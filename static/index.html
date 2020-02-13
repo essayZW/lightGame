@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关灯</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/light.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="left">
+                <div><img src="./images/light.ico" tabindex="-1" id="menu"></div>
+                <ul id="menu-body">
+                    <li id="about">关于</li>
+                    <li id="help">帮助</li>
+                    <li id="jump">跳转关卡</li>
+                    <li id="restart">重新开始</li>
+                    <li class="close">退出</li>
+                </ul>
+            </div>
+            <div class="middle">
+                <button id="last">&lArr;</button>
+                <div class="info">
+                    <div id="checkpoint">第<span></span>关</div>
+                    <div id="steps"><span></span> moves</div>
+                </div>
+                <button id="next">&rArr;</button>
+            </div>
+            <div class="right">
+                <button id="minimize">&minus;</button>
+                <button class="close">&times;</button>
+            </div>
+        </div>
+        <div class="game-area"></div>
+    </div>
+</body>
+</html>

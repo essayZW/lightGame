@@ -1,0 +1,57 @@
+{
+  "name": "light",
+  "version": "1.0.0",
+  "description": "A light game!",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "linux": "electron-builder --linux",
+    "win": "electron-builder --win",
+    "package-linux" : "electron-packager ./ light --platform linux --out ./packBuild --app-version 1.0.0 --overwrite --icon=./build/icon/light.png",
+    "package-win" : "electron-packager ./ light --platform win32 --out ./packBuild --app-version 1.0.0 --overwrite --icon=./build/icon/light.png"
+  },
+  "author": "essay",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^8.0.0",
+    "electron-builder": "^22.3.2"
+  },
+  "repository": "github:xxx/xxx",
+  "build": {
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "productName": "light",
+    "appId": "com.light.app",
+    "copyright": "Copyright © 2020 essay",
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icon/light.png"
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "build/icon/light.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./static/images/light.ico",
+      "uninstallerIcon": "./static/images/light.ico",
+      "installerHeaderIcon": "./static/images/light.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
