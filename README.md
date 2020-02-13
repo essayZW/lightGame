@@ -10,7 +10,7 @@ yarn start  //运行
 ```
 或者
 `npm start` 运行
-* devDependencies
+# devDependencies
   - electron@8.0
   - electron-builder@22.3.2
  
