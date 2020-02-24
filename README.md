@@ -13,11 +13,17 @@ yarn start  //运行
 `npm start` 运行
 
 打包, 使用`electron-builder`
+
 linux 下面
+
 `yarn run linux`或者`npm run linux`
+
 windows 下面
+
 `yarn run win`或者`npm run win`
+
 使用`electron-packager`打包
+
 ```
 //linux
 yarn run package-linux
