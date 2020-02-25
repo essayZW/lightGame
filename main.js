@@ -26,7 +26,7 @@ function createMainWindow(width = 400, height = 450){
 App.whenReady().then(createMainWindow);
 
 // 得到游戏关卡内容
-ipc.on('get-game-content', (event, message) => {
+ipc.on('get-game-content', (event) => {
     const gameContent = require('./config').getGameContentArray();
     event.sender.send('game-content-reply', gameContent);
 });
@@ -46,6 +46,18 @@ ipc.on('minimize-window', () => {
     for(let i = 0; i < windows.length; i ++){
         windows[i].minimize();
     }
+});
+
+// 保存游戏关卡信息
+ipc.on('save-game', (event, message) => {
+    require('./config').saveCheckPoint(message);
+    event.sender.send('save-finish');
+});
+
+// 得到保存的信息
+ipc.on('get-checkpoint', (event) => {
+    const checkpointInfo = require('./config').getCheckPoint();
+    event.sender.send('get-checkpoint-reply', checkpointInfo['checkpoint']);
 });
 
 // 显示关于窗口

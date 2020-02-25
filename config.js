@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 exports.getGameContentArray = function(){
     return [
         [5, 9, 10, 15],
@@ -31,4 +33,22 @@ exports.getGameContentArray = function(){
         [1, 6, 7, 9, 14, 16, 17, 18, 20, 21, 24],
         [2, 4, 5, 7, 10, 11, 12, 13, 17, 20, 22, 24, 25]
     ];
+}
+
+const dataFile = 'data.json';
+/**
+ * 保存关卡信息函数
+ */
+exports.saveCheckPoint = function(current){
+    fs.writeFileSync(dataFile, JSON.stringify({
+        checkpoint : current
+    }));
+};
+
+exports.getCheckPoint = function(){
+    if(!fs.existsSync(dataFile)){
+        return {"current" : 0};
+    }
+    const data = fs.readFileSync(dataFile);
+    return JSON.parse(data);
 }

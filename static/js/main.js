@@ -11,6 +11,11 @@ window.onload = function () {
     stepsArea = document.querySelector('#steps>span');
     // 得到进程通信类
     const ipc = require('electron').ipcRenderer;
+    // 得到保存的上次的关卡信息
+    ipc.send('get-checkpoint');
+    ipc.on('get-checkpoint-reply', (event, message) => {
+        nowCheckPoint = parseInt(message);
+    });
     // 得到游戏的关卡内容
     ipc.send('get-game-content');
     let gameArea = document.querySelector('.game-area');
@@ -26,7 +31,10 @@ window.onload = function () {
     let closeButton = document.querySelectorAll('.close');
     for(let i = 0; i < closeButton.length; i ++){
         closeButton[i].addEventListener('click', () => {
-            ipc.send('quit-game');
+            ipc.send('save-game', nowCheckPoint);
+            ipc.once('save-finish', () => {
+                ipc.send('quit-game');
+            });
         });
     }
 
